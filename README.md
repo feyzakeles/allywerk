@@ -13,6 +13,8 @@ https://allywerk.de
     img/                Logo (hell und dunkel) und Favicon
     fonts/              die beiden Schriften, mitgeliefert
     CNAME               die Domain für GitHub Pages
+    sitemap.xml         eine URL – Impressum und Datenschutz stehen auf noindex
+    robots.txt          verweist auf die Sitemap
     .htaccess           nur für den Fall eines Umzugs auf Apache-Webspace
 
 Kein Baukasten, keine Abhängigkeiten. JavaScript steckt nur in
@@ -56,6 +58,20 @@ Reihenfolge der Überschriften geprüft, keine Sprünge.
 barrierefrei nachrüsten gehört nicht zum Angebot, neue Seiten schon.
 Der Punkt unter „Was ich nicht mache“ sagt genau das – nicht
 verwässern.
+
+## Google Search Console
+
+Angebunden über eine **Domain-Property** (DNS-TXT-Eintrag bei IONOS), nicht
+über ein Skript auf der Seite. Deshalb keine Cookies, kein Einwilligungsbanner
+und keine Änderung an der Datenschutzerklärung – die fünf Zusagen in
+Abschnitt 2 bleiben wahr.
+
+**Kein Google Analytics.** GA4 würde alle fünf brechen und ein
+Einwilligungsbanner nötig machen. Bewusst nicht eingebaut.
+
+Impressum und Datenschutzerklärung tragen `noindex`. In der Search Console
+tauchen sie deshalb unter „Durch noindex ausgeschlossen“ auf – das ist kein
+Fehler.
 
 ## Noch offen
 

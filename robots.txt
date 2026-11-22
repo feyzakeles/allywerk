@@ -1,0 +1,7 @@
+# Allywerk – allywerk.de
+# Impressum und Datenschutzerklärung tragen noindex im Dokument selbst.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://allywerk.de/sitemap.xml
