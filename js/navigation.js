@@ -39,3 +39,46 @@
   addEventListener('hashchange', anstossen);
   aktualisieren();
 })();
+
+/* Menü-Knopf fürs Handy. Der Knopf steht mit `hidden` im HTML und wird
+   erst hier freigeschaltet – ohne JavaScript bleibt die Navigation offen
+   sichtbar, statt hinter einem toten Knopf zu verschwinden. */
+(function () {
+  var knopf = document.querySelector('.menue-knopf');
+  var kopf = document.querySelector('.kopf');
+  var nav = document.getElementById('hauptnav');
+  if (!knopf || !kopf || !nav) return;
+
+  document.documentElement.classList.add('js-nav');
+  knopf.hidden = false;
+
+  var offen = function () { return knopf.getAttribute('aria-expanded') === 'true'; };
+
+  function zu(fokusZurueck) {
+    kopf.classList.remove('kopf--offen');
+    knopf.setAttribute('aria-expanded', 'false');
+    if (fokusZurueck) knopf.focus();
+  }
+  function auf() {
+    kopf.classList.add('kopf--offen');
+    knopf.setAttribute('aria-expanded', 'true');
+  }
+
+  knopf.addEventListener('click', function () { offen() ? zu(false) : auf(); });
+
+  // Esc schließt und bringt den Fokus zurück auf den Knopf.
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && offen()) zu(true);
+  });
+
+  // Klick außerhalb des Kopfes schließt. Der Knopf selbst liegt im Kopf,
+  // sein eigener Klick schließt also nicht sofort wieder.
+  document.addEventListener('click', function (e) {
+    if (offen() && !kopf.contains(e.target)) zu(false);
+  });
+
+  // Ein Sprung im Menü schließt es, sonst verdeckt es das Sprungziel.
+  nav.addEventListener('click', function (e) {
+    if (offen() && e.target.closest('a')) zu(false);
+  });
+})();

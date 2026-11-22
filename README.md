@@ -138,17 +138,35 @@ aus seinem Kasten läuft. Die Umbruchpunkte stehen in `css/stil.css`:
 Unter 34 rem rutscht die Navigation in eine eigene Zeile, unter 30 rem
 schrumpft der Nach-oben-Knopf auf einen runden Pfeil.
 
-**Bis 327 px klebt der Kopf nicht.** Dort brauchen die fünf
-Navigationspunkte zwei Zeilen, der Kopf wird 136 statt 93 px hoch –
-festgeklebt nähme er dauerhaft ein Sechstel des Bildschirms. Die 327 px
-sind gemessen: ab 328 px passt alles in eine Zeile. Wer an Schriftgröße
-oder Abstand der Navigation dreht, misst neu nach.
+**Menü-Knopf bis 34 rem (544 px).** Darüber stehen alle fünf Links offen
+im Kopf, darunter hinter einem Knopf. Der Kopf ist dadurch auf jeder
+Breite 66 px hoch, auch bei 320 px.
 
-**Es gibt bewusst keinen Hamburger.** Alle Links sind auf jeder Breite
-sichtbar, die Navigation braucht kein JavaScript. Ein Menü hinter einem
-Symbol müsste `aria-expanded`, Fokusführung und Esc mitbringen – lauter
-Dinge, die bei einer Seite über Barrierefreiheit niemand falsch machen
-darf.
+So ist er gebaut – das sind die Stellen, an denen so ein Menü üblicherweise
+kaputtgeht:
+
+- Der Knopf steht mit `hidden` im HTML und wird erst von
+  `js/navigation.js` freigeschaltet, das dazu `js-nav` auf `<html>` setzt.
+  **Ohne JavaScript bleibt die Navigation offen sichtbar**, statt hinter
+  einem toten Knopf zu verschwinden.
+- Zugeklappt steht die Navigation auf `display:none`. Nur optisch
+  verstecken reicht nicht – sonst tabbt man in unsichtbare Links.
+- Echter `<button>` mit `aria-expanded`, das vom Skript mitgeführt wird,
+  und `aria-controls` auf `#hauptnav`.
+- **Esc schließt und gibt den Fokus an den Knopf zurück.** Klick daneben
+  schließt. Klick auf einen Link schließt, sonst verdeckt das Menü sein
+  eigenes Sprungziel.
+- Trefferfläche 100 × 44 px.
+- Der Knopf trägt sichtbar das Wort „Menü“, nicht nur drei Striche. Das
+  Symbol allein erkennen längst nicht alle als Menü.
+
+Geprüft mit 18 Einzelprüfungen (`scratchpad/menue.mjs` im Arbeitsverlauf)
+und axe über drei Seiten × hell/dunkel × zugeklappt/offen × 320/390/1280 px:
+16 Kombinationen, keine Verstöße.
+
+**Alle drei Seiten tragen denselben Kopf.** Wer die Navigation ändert,
+ändert sie in `index.html`, `impressum.html` und `datenschutz.html` –
+die Rechtstexte hatten eine Zeit lang eine veraltete Fassung.
 
 ## Zwei Dinge, die man leicht kaputtmacht
 
