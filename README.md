@@ -36,12 +36,14 @@ Die Klasse `offen` (orange gepunktet) markierte unfertige Stellen. Sie
 wird zurzeit nirgends benutzt, die Regel steht aber weiter in
 `css/stil.css` für den nächsten Entwurf.
 
+Seit dem 22.11.2026 spricht die Seite durchgehend in der **Ich-Form**,
+auch Impressum und Datenschutzerklärung. Wer Text ergänzt, bleibt dabei –
+ein einzelnes „wir“ fällt sofort auf.
+
 ## Noch offen
 
 - LinkedIn-Profil verlinken
 - Steuerliche Behandlung der Preise mit der Steuerberatung klären
-- Die Seite spricht durchgehend „wir“. Als Einzelunternehmen ginge auch
-  „ich“ – bewusst entscheiden, nicht aus Versehen stehen lassen.
 - Die Punktzahlen (47 Website-Check, 19 Gestaltung) weichen von denen im
   Prüfwerkzeug ab (45 und 21). Eine der beiden Zahlen stimmt nicht.
 - „Wir bauen nicht selbst um – noch nicht.“ stimmt so nicht mehr: Die
