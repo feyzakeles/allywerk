@@ -422,6 +422,10 @@ img,svg{max-width:100%}
 .kontaktliste span{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--auf-violett-soft)}
 .kontaktliste b{font-size:.98rem}
+/* E-Mail und Telefon sind Links – ohne Unterstreichung wären sie von
+   „Köln“ daneben nicht zu unterscheiden. Dazu Höhe für 2.5.8. */
+.kontaktliste a{text-decoration:underline;text-underline-offset:.22em;
+  display:inline-block;padding-block:.25rem}
 
 .offen{
   border-bottom:2px dotted currentColor;font-weight:700;
