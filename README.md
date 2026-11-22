@@ -138,35 +138,46 @@ aus seinem Kasten läuft. Die Umbruchpunkte stehen in `css/stil.css`:
 Unter 34 rem rutscht die Navigation in eine eigene Zeile, unter 30 rem
 schrumpft der Nach-oben-Knopf auf einen runden Pfeil.
 
-**Menü-Knopf bis 34 rem (544 px).** Darüber stehen alle fünf Links offen
-im Kopf, darunter hinter einem Knopf. Der Kopf ist dadurch auf jeder
-Breite 66 px hoch, auch bei 320 px.
+**Menü-Schublade bis 34 rem (544 px).** Darüber stehen alle fünf Links
+offen im Kopf, darunter fährt eine Schublade von links über die Seite –
+runder Knopf links, Schublade mit Markenkopf und Schließen-Knopf,
+Symbol plus Text je Eintrag, darunter Impressum und Datenschutz,
+dahinter die Seite abgedunkelt. Der Kopf ist dadurch auf jeder Breite
+66 bis 67 px hoch.
 
-So ist er gebaut – das sind die Stellen, an denen so ein Menü üblicherweise
-kaputtgeht:
+Eine Schublade über der Seite ist ein Dialog. Das sind die Stellen, an
+denen so etwas üblicherweise durch eine Prüfung fällt:
 
 - Der Knopf steht mit `hidden` im HTML und wird erst von
   `js/navigation.js` freigeschaltet, das dazu `js-nav` auf `<html>` setzt.
-  **Ohne JavaScript bleibt die Navigation offen sichtbar**, statt hinter
-  einem toten Knopf zu verschwinden.
-- Zugeklappt steht die Navigation auf `display:none`. Nur optisch
-  verstecken reicht nicht – sonst tabbt man in unsichtbare Links.
-- Echter `<button>` mit `aria-expanded`, das vom Skript mitgeführt wird,
-  und `aria-controls` auf `#hauptnav`.
-- **Esc schließt und gibt den Fokus an den Knopf zurück.** Klick daneben
-  schließt. Klick auf einen Link schließt, sonst verdeckt das Menü sein
-  eigenes Sprungziel.
-- Trefferfläche 100 × 44 px.
-- Der Knopf trägt sichtbar das Wort „Menü“, nicht nur drei Striche. Das
-  Symbol allein erkennen längst nicht alle als Menü.
+  **Ohne JavaScript bleibt die Navigation als normale Leiste sichtbar.**
+- Zugeklappt `visibility:hidden` – das nimmt die Links aus Tabulatorlauf
+  und Screenreader und lässt die Bewegung trotzdem zu. Nur verschieben
+  würde beides nicht tun.
+- **`visibility` schaltet beim Öffnen sofort um, beim Schließen erst nach
+  der Fahrt** (`transition:… visibility 0s linear .25s`). Ohne das steht
+  die Schublade im Moment des `focus()` noch auf `hidden`, und ein Fokus
+  auf etwas Unsichtbares verpufft wirkungslos.
+- Beim Öffnen springt der Fokus auf den Schließen-Knopf und **bleibt in
+  der Schublade** – Tab und Shift+Tab laufen im Kreis.
+- Esc schließt und gibt den Fokus an den Knopf zurück. Klick auf den
+  Schleier schließt, Klick auf einen Link auch.
+- `document.body.style.overflow` sperrt die Seite dahinter.
+- `prefers-reduced-motion` schaltet die Fahrt ab.
+- Trefferflächen: Knopf 44 × 44, Einträge mindestens 48 px hoch.
 
-Geprüft mit 18 Einzelprüfungen (`scratchpad/menue.mjs` im Arbeitsverlauf)
-und axe über drei Seiten × hell/dunkel × zugeklappt/offen × 320/390/1280 px:
-16 Kombinationen, keine Verstöße.
+Geprüft mit 27 Einzelprüfungen und axe über drei Seiten × hell/dunkel ×
+zugeklappt/offen × 320/390/1280 px: 24 Kombinationen, keine Verstöße.
+
+**Vorsicht bei der Spezifität.** `.kopf nav ul` wiegt schwerer als eine
+einzelne Klasse. Deshalb steht die Regel für `.schublade__zweit` als
+`.kopf nav ul.schublade__zweit` da – sonst stehen Impressum und
+Datenschutz auch auf dem Desktop in der Leiste. Und `.schublade__icon`
+ist auf dem Desktop ausgeblendet, sonst wachsen die SVGs ungebremst und
+machen den Kopf doppelt so hoch.
 
 **Alle drei Seiten tragen denselben Kopf.** Wer die Navigation ändert,
-ändert sie in `index.html`, `impressum.html` und `datenschutz.html` –
-die Rechtstexte hatten eine Zeit lang eine veraltete Fassung.
+ändert sie in `index.html`, `impressum.html` und `datenschutz.html`.
 
 ## Zwei Dinge, die man leicht kaputtmacht
 

@@ -40,45 +40,69 @@
   aktualisieren();
 })();
 
-/* Menü-Knopf fürs Handy. Der Knopf steht mit `hidden` im HTML und wird
-   erst hier freigeschaltet – ohne JavaScript bleibt die Navigation offen
-   sichtbar, statt hinter einem toten Knopf zu verschwinden. */
+/* Menü-Schublade fürs Handy.
+   Der Knopf steht mit `hidden` im HTML und wird erst hier freigeschaltet –
+   ohne JavaScript bleibt die Navigation als normale Leiste sichtbar.
+   Eine Schublade, die über der Seite liegt, ist ein Dialog: Der Fokus
+   gehört hinein und darf nicht dahinter entwischen, Esc schließt, und der
+   Fokus kehrt zum Knopf zurück. Genau daran scheitern die meisten. */
 (function () {
   var knopf = document.querySelector('.menue-knopf');
   var kopf = document.querySelector('.kopf');
-  var nav = document.getElementById('hauptnav');
-  if (!knopf || !kopf || !nav) return;
+  var lade = document.getElementById('schublade');
+  var schleier = document.querySelector('.schublade__schleier');
+  var zuKnopf = document.querySelector('.schublade__zu');
+  if (!knopf || !kopf || !lade || !schleier || !zuKnopf) return;
 
   document.documentElement.classList.add('js-nav');
   knopf.hidden = false;
 
-  var offen = function () { return knopf.getAttribute('aria-expanded') === 'true'; };
+  function offen() { return knopf.getAttribute('aria-expanded') === 'true'; }
+
+  // Nur was wirklich sichtbar ist, kommt in den Fokuslauf.
+  function ziele() {
+    return Array.prototype.filter.call(
+      lade.querySelectorAll('a[href], button'),
+      function (el) { return el.offsetParent !== null || el === zuKnopf; }
+    );
+  }
+
+  function auf() {
+    kopf.classList.add('kopf--offen');
+    knopf.setAttribute('aria-expanded', 'true');
+    schleier.hidden = false;
+    document.body.style.overflow = 'hidden';   // Seite dahinter nicht mitscrollen
+    zuKnopf.focus();
+  }
 
   function zu(fokusZurueck) {
     kopf.classList.remove('kopf--offen');
     knopf.setAttribute('aria-expanded', 'false');
+    schleier.hidden = true;
+    document.body.style.overflow = '';
     if (fokusZurueck) knopf.focus();
-  }
-  function auf() {
-    kopf.classList.add('kopf--offen');
-    knopf.setAttribute('aria-expanded', 'true');
   }
 
   knopf.addEventListener('click', function () { offen() ? zu(false) : auf(); });
+  zuKnopf.addEventListener('click', function () { zu(true); });
+  schleier.addEventListener('click', function () { zu(false); });
 
-  // Esc schließt und bringt den Fokus zurück auf den Knopf.
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && offen()) zu(true);
-  });
-
-  // Klick außerhalb des Kopfes schließt. Der Knopf selbst liegt im Kopf,
-  // sein eigener Klick schließt also nicht sofort wieder.
-  document.addEventListener('click', function (e) {
-    if (offen() && !kopf.contains(e.target)) zu(false);
-  });
-
-  // Ein Sprung im Menü schließt es, sonst verdeckt es das Sprungziel.
-  nav.addEventListener('click', function (e) {
+  // Ein Sprung im Menü schließt es, sonst verdeckt es sein eigenes Ziel.
+  lade.addEventListener('click', function (e) {
     if (offen() && e.target.closest('a')) zu(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!offen()) return;
+    if (e.key === 'Escape') { zu(true); return; }
+    if (e.key !== 'Tab') return;
+
+    // Fokus im Dialog halten.
+    var liste = ziele();
+    if (!liste.length) return;
+    var erstes = liste[0], letztes = liste[liste.length - 1];
+    if (!lade.contains(document.activeElement)) { e.preventDefault(); erstes.focus(); return; }
+    if (e.shiftKey && document.activeElement === erstes) { e.preventDefault(); letztes.focus(); }
+    else if (!e.shiftKey && document.activeElement === letztes) { e.preventDefault(); erstes.focus(); }
   });
 })();
