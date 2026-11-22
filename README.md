@@ -176,6 +176,11 @@ Datenschutz auch auf dem Desktop in der Leiste. Und `.schublade__icon`
 ist auf dem Desktop ausgeblendet, sonst wachsen die SVGs ungebremst und
 machen den Kopf doppelt so hoch.
 
+**Das Logo sitzt auf dem Handy mittig.** Dafür ist `.kopf .bahn` dort ein
+Raster aus drei Spalten – Knopf, Logo, Leerraum. Die dritte Spalte ist
+leer und sieht überflüssig aus, hält aber die Mitte: ohne sie säße das
+Logo nur rechts neben dem Knopf.
+
 **Alle drei Seiten tragen denselben Kopf.** Wer die Navigation ändert,
 ändert sie in `index.html`, `impressum.html` und `datenschutz.html`.
 

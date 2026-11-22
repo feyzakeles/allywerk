@@ -560,7 +560,13 @@ footer strong{color:var(--ink)}
     box-shadow:var(--schatten);
   }
   .js-nav .menue-knopf:hover{background:var(--lila)}
-  .js-nav .kopf .bahn{flex-wrap:nowrap}
+  /* Drei Spalten: Knopf, Logo, Leerraum. Ohne die dritte Spalte säße das
+     Logo nicht in der Mitte, sondern nur rechts neben dem Knopf. */
+  .js-nav .kopf .bahn{
+    display:grid;grid-template-columns:2.75rem 1fr 2.75rem;
+    align-items:center;gap:.6rem;
+  }
+  .js-nav .logo-link{justify-self:center}
 
   /* Die Schublade selbst. */
   .js-nav .schublade{
@@ -581,7 +587,7 @@ footer strong{color:var(--ink)}
 
   .js-nav .schublade__kopf{
     display:flex;align-items:center;justify-content:space-between;gap:1rem;
-    background:var(--verlauf);color:var(--auf-violett);
+    background:var(--violett);color:#fff;
     padding:1.1rem 1.1rem 1.1rem 1.4rem;flex:none;
   }
   .js-nav .schublade__marke{font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
@@ -600,7 +606,7 @@ footer strong{color:var(--ink)}
   .js-nav .schublade a{
     display:flex;align-items:center;gap:1rem;
     padding:.95rem 1.4rem;min-height:3rem;
-    font-size:1.02rem;font-weight:700;color:var(--ink);
+    font-size:1.02rem;font-weight:400;color:var(--ink);
     text-decoration:none;border-bottom:0;
   }
   .js-nav .schublade a:hover{background:var(--lila)}
