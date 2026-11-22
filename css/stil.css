@@ -504,3 +504,12 @@ footer strong{color:var(--ink)}
 .rechtstext a[href^="tel:"],.rechtstext a[href^="mailto:"]{
   display:inline-block;padding-block:.22rem;
 }
+
+/* ---------- Preisgruppen (Prüfen / Bauen) ---------- */
+.preisgruppe{
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);font-weight:500;margin:2.75rem 0 1.1rem;
+}
+.preisgruppe:first-of-type{margin-top:0}
+.paket h4{font-size:1.2rem;line-height:1.15;letter-spacing:-.02em;margin:0}
+.preishinweis{margin-top:1.25rem;font-size:.86rem;color:var(--ink-soft);max-width:72ch}

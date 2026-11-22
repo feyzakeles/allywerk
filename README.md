@@ -40,14 +40,36 @@ Seit dem 22.11.2026 spricht die Seite durchgehend in der **Ich-Form**,
 auch Impressum und Datenschutzerklärung. Wer Text ergänzt, bleibt dabei –
 ein einzelnes „wir“ fällt sofort auf.
 
+## Zwei Angebote, nicht eins
+
+Seit dem 22.11.2026 verkauft die Seite beides: **Prüfen** (Abschnitt
+`#leistungen`) und **Bauen** (`#bauen`). Die Navigation heißt deshalb
+„Prüfen · Bauen · Ablauf · Preise · Kontakt“.
+
+Alle Preise stehen im Abschnitt `#preise`, in zwei Gruppen (`.preisgruppe`).
+Die Paketnamen sind dort `h4`, weil die Gruppenüberschrift `h3` ist –
+Reihenfolge der Überschriften geprüft, keine Sprünge.
+
+**Umbauen ist nicht dasselbe wie neu bauen.** Bestehende Seiten
+barrierefrei nachrüsten gehört nicht zum Angebot, neue Seiten schon.
+Der Punkt unter „Was ich nicht mache“ sagt genau das – nicht
+verwässern.
+
 ## Noch offen
 
 - LinkedIn-Profil verlinken
 - Steuerliche Behandlung der Preise mit der Steuerberatung klären
 - Die Punktzahlen (47 Website-Check, 19 Gestaltung) weichen von denen im
   Prüfwerkzeug ab (45 und 21). Eine der beiden Zahlen stimmt nicht.
-- „Wir bauen nicht selbst um – noch nicht.“ stimmt so nicht mehr: Die
-  Gewerbeanmeldung nennt ausdrücklich die Erstellung von Websites.
+- Die Überschrift im Hero („Ein Werkzeug findet einen Teil. Den Rest
+  finde ich.“) spricht nur vom Prüfen. Seit es zwei Angebote gibt,
+  passt sie nur noch halb.
+- Die Preise stehen jetzt an drei Stellen: hier, in
+  `~/Desktop/Allywerk-Preisliste.docx` und im Prüfwerkzeug unter
+  Einstellungen. Bei Änderungen alle drei nachziehen.
+- In der Word-Preisliste steht „Prüfung auf Barrierefreiheit
+  bestehender Websites biete ich nicht an“. Das stimmt nicht mehr –
+  Prüfen und Bauen sind beide im Angebot.
 
 ## Farben
 
