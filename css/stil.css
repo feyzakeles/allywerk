@@ -1,3 +1,61 @@
+/* ---------- Schriften ----------
+   Mitgeliefert, nicht von fremden Servern geladen. Atkinson Hyperlegible und
+   IBM Plex Mono stehen beide unter der SIL Open Font License 1.1.
+   Nur die Schnitte, die diese Seite wirklich benutzt: kein Kursiv,
+   Untermengen latin und latin-ext. Zusammen rund 90 KB.
+   Wer eine Schriftstärke ergänzt, lädt hier auch die Datei dazu. */
+
+@font-face{
+  font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/atkinson-400-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/atkinson-400-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../fonts/atkinson-700-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../fonts/atkinson-700-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/plexmono-400-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/plexmono-400-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../fonts/plexmono-500-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../fonts/plexmono-500-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+  src:url('../fonts/plexmono-600-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+  src:url('../fonts/plexmono-600-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* Allywerk – Stil der Website
    Farben sind alle gemessen; die Werte stehen als Kommentar dahinter.
    Geprüft gegen WCAG 2.2 AA: Text 4,5:1, Bedienelemente und Rahmen 3:1. */
@@ -405,3 +463,37 @@ footer strong{color:var(--ink)}
   .nach-oben svg{width:1.15rem;height:1.15rem}
 }
 @media (prefers-reduced-motion:reduce){.nach-oben a:hover{transform:none}}
+
+/* ---------- Rechtstexte (Impressum, Datenschutz) ---------- */
+/* Nutzt nur bestehende Farb-Tokens, damit hell und dunkel von selbst stimmen. */
+.rechtstext{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.rechtstext h1{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:.8rem}
+.rechtstext .vorlauf{color:var(--ink-soft);max-width:70ch;margin-bottom:clamp(2rem,4vw,3rem)}
+.rechtstext section{max-width:72ch;margin-bottom:clamp(1.8rem,3.5vw,2.6rem)}
+.rechtstext h2{font-size:clamp(1.15rem,2.2vw,1.4rem);margin-bottom:.7rem}
+.rechtstext h3{font-size:1.02rem;margin:1.4rem 0 .5rem}
+.rechtstext p,.rechtstext li{color:var(--ink-soft);margin-bottom:.7rem}
+.rechtstext ul{padding-left:1.3rem;margin-bottom:.7rem}
+.rechtstext li{margin-bottom:.35rem}
+.rechtstext strong{color:var(--ink)}
+.rechtstext a{color:var(--teal);text-underline-offset:.2em}
+.rechtstext address{font-style:normal;color:var(--ink);line-height:1.7}
+.rechtstext address + p{margin-top:.9rem}
+.rechtstext .stand{
+  font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);
+  border-top:1px solid var(--rahmen);padding-top:1rem;margin-top:2.5rem;max-width:72ch;
+}
+.zurueck{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-weight:700;font-size:.9rem;color:var(--teal);
+  text-decoration:none;margin-bottom:1.6rem;
+  padding:.45rem 0;min-height:1.5rem;
+}
+.zurueck:hover{text-decoration:underline}
+.fussnav{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:.4rem}
+.fussnav a{color:var(--ink);font-weight:700;font-size:.86rem;padding-block:.35rem}
+/* Telefon und E-Mail werden angetippt – über 24 px, obwohl 2.5.8 sie
+   als Inline-Links ausnehmen würde. */
+.rechtstext a[href^="tel:"],.rechtstext a[href^="mailto:"]{
+  display:inline-block;padding-block:.22rem;
+}
