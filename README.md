@@ -47,6 +47,8 @@ Seit dem 22.11.2026 verkauft die Seite beides: **Prüfen** (Abschnitt
 „Prüfen · Bauen · Ablauf · Preise · Kontakt“.
 
 Alle Preise stehen im Abschnitt `#preise`, in zwei Gruppen (`.preisgruppe`).
+Die Prüf-Preise stammen von Merve (`~/Downloads/eser-digital-website`),
+die Bau-Preise aus `~/Desktop/Allywerk-Preisliste.pages` vom 21.11.2026.
 Die Paketnamen sind dort `h4`, weil die Gruppenüberschrift `h3` ist –
 Reihenfolge der Überschriften geprüft, keine Sprünge.
 
@@ -64,12 +66,21 @@ verwässern.
 - Die Überschrift im Hero („Ein Werkzeug findet einen Teil. Den Rest
   finde ich.“) spricht nur vom Prüfen. Seit es zwei Angebote gibt,
   passt sie nur noch halb.
-- Die Preise stehen jetzt an drei Stellen: hier, in
-  `~/Desktop/Allywerk-Preisliste.docx` und im Prüfwerkzeug unter
+- Die Leistungs-Karte nennt „47 Punkte“, die Preis-Karte „rund 100
+  Einzelprüfungen“. Beides beschreibt denselben Detail-Check.
+- Der Gestaltungs-Check steht noch als Leistung, hat aber keinen Preis
+  mehr. Entweder Preis zurück oder Karte raus.
+- Der kostenlose Kurz-Check war am 30.09.2026 bewusst abgeschafft
+  worden (siehe CLAUDE.md im Hauptprojekt). Mit Merves Preisen ist er
+  wieder da – bewusst so lassen oder streichen.
+- „Komplett mit SEO“ ist ein Monatsmodell (449 € × 6). Feyza wollte
+  monatliche Posten eigentlich nicht.
+- In `Allywerk-Preisliste.pages` heißt es bei Paket 2 „+ CMS“, während
+  „In jedem Paket enthalten“ den Redaktionsbereich für beide nennt.
+  Auf der Website steht die zweite Lesart. Eine Fassung muss weg.
+- Preise stehen an drei Stellen: hier, in
+  `~/Desktop/Allywerk-Preisliste.pages` und im Prüfwerkzeug unter
   Einstellungen. Bei Änderungen alle drei nachziehen.
-- In der Word-Preisliste steht „Prüfung auf Barrierefreiheit
-  bestehender Websites biete ich nicht an“. Das stimmt nicht mehr –
-  Prüfen und Bauen sind beide im Angebot.
 
 ## Farben
 

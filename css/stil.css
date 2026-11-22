@@ -513,3 +513,13 @@ footer strong{color:var(--ink)}
 .preisgruppe:first-of-type{margin-top:0}
 .paket h4{font-size:1.2rem;line-height:1.15;letter-spacing:-.02em;margin:0}
 .preishinweis{margin-top:1.25rem;font-size:.86rem;color:var(--ink-soft);max-width:72ch}
+
+/* Drei Prüf-Pakete nebeneinander, sobald Platz ist. */
+@media (min-width:44rem) and (max-width:61.99rem){.pakete--drei{grid-template-columns:1fr 1fr}}
+@media (min-width:62rem){.pakete--drei{grid-template-columns:repeat(3,1fr)}}
+.weitere__titel{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);margin:0 0 .6rem}
+.enthalten{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
+.enthalten li{display:flex;gap:.6rem;font-size:.95rem;color:var(--ink-soft)}
+.enthalten li::before{content:"";flex:none;width:.45rem;height:.45rem;margin-top:.55rem;
+  border-radius:50%;background:var(--teal)}
