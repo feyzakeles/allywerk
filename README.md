@@ -75,9 +75,12 @@ verwässern.
   wieder da – bewusst so lassen oder streichen.
 - „Komplett mit SEO“ ist ein Monatsmodell (449 € × 6). Feyza wollte
   monatliche Posten eigentlich nicht.
-- In `Allywerk-Preisliste.pages` heißt es bei Paket 2 „+ CMS“, während
-  „In jedem Paket enthalten“ den Redaktionsbereich für beide nennt.
-  Auf der Website steht die zweite Lesart. Eine Fassung muss weg.
+- Der Redaktionsbereich steht jetzt bei **Paket 2**, so wie die
+  Preistabelle in `Allywerk-Preisliste.pages` es sagt („+ CMS“). Die
+  Zeile „In jedem Paket enthalten: Redaktionsbereich“ aus demselben
+  Dokument wurde deshalb nicht übernommen – beides zusammen hätte sich
+  widersprochen. Falls der Redaktionsbereich doch in beide Pakete soll:
+  eine Zeile in `#preise` und in der Preisliste.
 - Preise stehen an drei Stellen: hier, in
   `~/Desktop/Allywerk-Preisliste.pages` und im Prüfwerkzeug unter
   Einstellungen. Bei Änderungen alle drei nachziehen.
