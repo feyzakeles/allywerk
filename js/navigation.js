@@ -72,7 +72,9 @@
     knopf.setAttribute('aria-expanded', 'true');
     schleier.hidden = false;
     document.body.style.overflow = 'hidden';   // Seite dahinter nicht mitscrollen
-    zuKnopf.focus();
+    // preventScroll: sonst scrollt der Browser das frisch fokussierte
+    // Element in den Blick – und die Seite springt bei jedem Öffnen.
+    zuKnopf.focus({ preventScroll: true });
   }
 
   function zu(fokusZurueck) {
@@ -80,7 +82,7 @@
     knopf.setAttribute('aria-expanded', 'false');
     schleier.hidden = true;
     document.body.style.overflow = '';
-    if (fokusZurueck) knopf.focus();
+    if (fokusZurueck) knopf.focus({ preventScroll: true });
   }
 
   knopf.addEventListener('click', function () { offen() ? zu(false) : auf(); });

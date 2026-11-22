@@ -162,6 +162,12 @@ denen so etwas üblicherweise durch eine Prüfung fällt:
   der Schublade** – Tab und Shift+Tab laufen im Kreis.
 - Esc schließt und gibt den Fokus an den Knopf zurück. Klick auf den
   Schleier schließt, Klick auf einen Link auch.
+- **`focus()` immer mit `{preventScroll:true}`.** Ohne das scrollt der
+  Browser den frisch fokussierten Knopf in den Blick, und die Seite
+  springt beim Schließen 434 px nach oben. Gemessen: `knopf.focus()`
+  bringt scrollY von 1200 auf 766, mit `preventScroll` bleibt es bei
+  1200. Der Schließen-Knopf in der Schublade macht das nicht, der liegt
+  fest im Fenster – es trifft nur den Hamburger im Seitenfluss.
 - `document.body.style.overflow` sperrt die Seite dahinter.
 - `prefers-reduced-motion` schaltet die Fahrt ab.
 - Trefferflächen: Knopf 44 × 44, Einträge mindestens 48 px hoch.
