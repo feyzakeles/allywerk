@@ -22,15 +22,30 @@ doppelklicken reicht zum Anschauen. Zum Veröffentlichen den ganzen
 Ordner auf den Webspace laden – oder einfach pushen, GitHub Pages
 veröffentlicht `main` von selbst.
 
+## Eine Person, nicht zwei
+
+Bis zum 22.11.2026 verkaufte die Seite „zwei Prüferinnen“. Allywerk ist
+aber Feyzas eigenes Gewerbe, angemeldet als Einzelunternehmen; ihre
+Freundin hat eine eigene Website. Alle Stellen, die zwei Menschen
+behaupteten, sind entfernt: Seitenbeschreibung, Hero-Zeile, die
+Überschrift „Zwei Menschen, ein Bericht“, die zweite Personenkarte, der
+Ablaufschritt und der Paket-Stichpunkt. Die Fähigkeiten beider Karten
+stehen jetzt in einer.
+
+Die Klasse `offen` (orange gepunktet) markierte unfertige Stellen. Sie
+wird zurzeit nirgends benutzt, die Regel steht aber weiter in
+`css/stil.css` für den nächsten Entwurf.
+
 ## Noch offen
 
-- Name und Kurzvorstellung der Partnerin
-- E-Mail, Telefon, LinkedIn-Profile
-- Preis fürs gemeinsame Paket
+- LinkedIn-Profil verlinken
 - Steuerliche Behandlung der Preise mit der Steuerberatung klären
-
-Alles davon steht in `index.html` mit der Klasse `offen` markiert und
-ist auf der Seite orange gepunktet zu sehen.
+- Die Seite spricht durchgehend „wir“. Als Einzelunternehmen ginge auch
+  „ich“ – bewusst entscheiden, nicht aus Versehen stehen lassen.
+- Die Punktzahlen (47 Website-Check, 19 Gestaltung) weichen von denen im
+  Prüfwerkzeug ab (45 und 21). Eine der beiden Zahlen stimmt nicht.
+- „Wir bauen nicht selbst um – noch nicht.“ stimmt so nicht mehr: Die
+  Gewerbeanmeldung nennt ausdrücklich die Erstellung von Websites.
 
 ## Farben
 

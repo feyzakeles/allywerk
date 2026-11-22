@@ -279,6 +279,9 @@ img,svg{max-width:100%}
 /* ------------------------------------------------------------------ Personen */
 .personen{display:grid;gap:1.25rem}
 @media (min-width:44rem){.personen{grid-template-columns:1fr 1fr}}
+/* Eine einzelne Karte soll nicht halb leer in der linken Spalte hängen. */
+.personen--eine{grid-template-columns:1fr;max-width:40rem}
+@media (min-width:44rem){.personen--eine{grid-template-columns:1fr}}
 .person{
   background:var(--karte);border:1px solid var(--rahmen);border-radius:var(--radius);
   padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.75rem;
