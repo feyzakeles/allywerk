@@ -187,6 +187,16 @@ Raster aus drei Spalten – Knopf, Logo, Leerraum. Die dritte Spalte ist
 leer und sieht überflüssig aus, hält aber die Mitte: ohne sie säße das
 Logo nur rechts neben dem Knopf.
 
+**Impressum und Datenschutz stehen nur in der Fußzeile.** Sie waren eine
+Zeit lang auch in der Schublade – auf dem Handy also doppelt. Die
+Fußzeile ist der Ort, an dem Leute danach suchen, und sie ist auf jeder
+Breite da.
+
+**Alle Abschnittsköpfe sind mittig** (`kopfzeile--mitte`), der Text in
+den Karten darunter linksbündig. Vorher war die Hälfte der Köpfe links,
+die andere mittig – auf dem Handy fiel das sofort auf. Wer einen
+Abschnitt ergänzt, nimmt `kopfzeile--mitte`.
+
 **Alle drei Seiten tragen denselben Kopf.** Wer die Navigation ändert,
 ändert sie in `index.html`, `impressum.html` und `datenschutz.html`.
 
