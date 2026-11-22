@@ -528,3 +528,15 @@ footer strong{color:var(--ink)}
    und oberhalb von 56rem bleibt es bei zwei statt drei Spalten. */
 .leistungen--zwei > article:last-child{grid-column:auto}
 @media (min-width:56rem){.leistungen--zwei{grid-template-columns:1fr 1fr}}
+
+/* Ab 328 px passen alle fünf Navigationspunkte in eine Zeile, der Kopf ist
+   dann 93 px hoch und bleibt oben kleben. Darunter bricht die Navigation um,
+   der Kopf wird 136 px hoch – festgeklebt fräße er dauerhaft ein Sechstel des
+   Bildschirms. Deshalb scrollt er dort mit weg.
+   Die 327 px sind gemessen, nicht geschätzt: ab 328 px eine Zeile, bei 327 zwei.
+   Wer an Schriftgröße oder Abstand der Navigation dreht, misst neu nach.
+   Kein JavaScript, kein Hamburger – alle fünf Links bleiben immer sichtbar. */
+@media (max-width:20.44rem){            /* bis 327 px */
+  html{scroll-padding-top:1rem}
+  .kopf{position:static}
+}

@@ -138,6 +138,18 @@ aus seinem Kasten läuft. Die Umbruchpunkte stehen in `css/stil.css`:
 Unter 34 rem rutscht die Navigation in eine eigene Zeile, unter 30 rem
 schrumpft der Nach-oben-Knopf auf einen runden Pfeil.
 
+**Bis 327 px klebt der Kopf nicht.** Dort brauchen die fünf
+Navigationspunkte zwei Zeilen, der Kopf wird 136 statt 93 px hoch –
+festgeklebt nähme er dauerhaft ein Sechstel des Bildschirms. Die 327 px
+sind gemessen: ab 328 px passt alles in eine Zeile. Wer an Schriftgröße
+oder Abstand der Navigation dreht, misst neu nach.
+
+**Es gibt bewusst keinen Hamburger.** Alle Links sind auf jeder Breite
+sichtbar, die Navigation braucht kein JavaScript. Ein Menü hinter einem
+Symbol müsste `aria-expanded`, Fokusführung und Esc mitbringen – lauter
+Dinge, die bei einer Seite über Barrierefreiheit niemand falsch machen
+darf.
+
 ## Zwei Dinge, die man leicht kaputtmacht
 
 Die Dateien brauchen `<!doctype html>` und `<html lang="de">`. Beides
