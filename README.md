@@ -68,8 +68,9 @@ verwässern.
   passt sie nur noch halb.
 - Die Leistungs-Karte nennt „47 Punkte“, die Preis-Karte „rund 100
   Einzelprüfungen“. Beides beschreibt denselben Detail-Check.
-- Der Gestaltungs-Check steht noch als Leistung, hat aber keinen Preis
-  mehr. Entweder Preis zurück oder Karte raus.
+- Der Gestaltungs-Check ist am 22.11.2026 von der Seite genommen
+  worden, Karte und Preis. Im Prüfwerkzeug gibt es ihn weiter als
+  eigene Prüfart – dort steht er unverändert.
 - Der kostenlose Kurz-Check war am 30.09.2026 bewusst abgeschafft
   worden (siehe CLAUDE.md im Hauptprojekt). Mit Merves Preisen ist er
   wieder da – bewusst so lassen oder streichen.
