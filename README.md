@@ -79,11 +79,25 @@ fremde Seiten nicht abrufen, das verbietet CORS. `worker/kurzcheck.js`
 ist ein Cloudflare Worker: eine Datei, kein Betriebssystem, kostenlos bis
 100.000 Anfragen am Tag. Er speichert nichts.
 
-**Scharfschalten:** Worker bei Cloudflare anlegen, Inhalt von
-`worker/kurzcheck.js` einfügen, Deploy. Dann die Adresse oben in
-`js/kurzcheck.js` als `DIENST` eintragen. Solange sie leer ist, sagt das
-Formular ehrlich, dass der Dienst nicht verbunden ist, und verweist auf
-die E-Mail-Adresse.
+**Läuft seit 24.11.2026** unter
+`https://kurzcheck.shrill-wind-658d.workers.dev/`, eingetragen als
+`DIENST` oben in `js/kurzcheck.js`. Wird die Adresse dort geleert, sagt
+das Formular ehrlich, dass der Dienst nicht verbunden ist, und verweist
+auf die E-Mail-Adresse.
+
+**Ändern:** Cloudflare → Workers und Pages → `kurzcheck` → Code
+bearbeiten. Die Datei `worker/kurzcheck.js` im Repo ist die Quelle –
+beides zusammen ändern, sonst laufen sie auseinander.
+
+An der Live-Seite gemessen: Ergebnis nach 1,7 Sekunden, PDF 8,5 KB,
+axe ohne Verstoß. Fehlerfälle geprüft – nicht erreichbare Seite,
+private Adresse, Unsinn im Feld und eine Adresse ohne HTML geben alle
+einen verständlichen deutschen Satz.
+
+**Lokal lässt sich der Kurzcheck nicht testen.** Der Worker nimmt nur
+Anfragen von `https://allywerk.de` an, eine Testseite auf `127.0.0.1`
+prallt an CORS ab. Das ist Absicht. Zum Entwickeln einen zweiten Worker
+anlegen oder `ERLAUBT` dort vorübergehend erweitern.
 
 - Private Adressbereiche sind gesperrt (`127.`, `10.`, `192.168.`,
   `172.16–31.`, `localhost`). Cloudflare routet dorthin ohnehin nicht,
