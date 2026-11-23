@@ -5,7 +5,12 @@ https://allywerk.de
 
 ## Aufbau
 
-    index.html          die Startseite
+    index.html          Startseite: Hero, wer prüft, eigener Anspruch
+    pruefen/            was geprüft wird, Werkzeug gegen Handarbeit, Grenzen
+    bauen/              Websites bauen
+    ablauf/             fünf Schritte
+    preise/             alle Preise
+    kontakt/            Kontakt
     impressum.html      Impressum nach § 5 DDG
     datenschutz.html    Datenschutzerklärung
     css/stil.css        Schriften, Farben, Abstände
@@ -20,10 +25,14 @@ https://allywerk.de
     robots.txt          verweist auf die Sitemap
     .htaccess           nur für den Fall eines Umzugs auf Apache-Webspace
 
-Kein Baukasten, keine Abhängigkeiten. JavaScript steckt nur in
-`js/navigation.js` und nur für die Markierung in der Navigation –
-ohne die Datei funktioniert alles andere weiter. `index.html`
-doppelklicken reicht zum Anschauen. Zum Veröffentlichen den ganzen
+Kein Baukasten, keine Abhängigkeiten.
+
+**Die Links zwischen den Seiten sind absolut** (`/`, `/#preise`,
+`/impressum.html`). Damit steht in der Adresszeile `allywerk.de/#preise`
+statt `allywerk.de/index.html#preise`. Der Preis dafür: Eine
+Unterseite per Doppelklick zu öffnen funktioniert nicht mehr, weil `/`
+dort auf die Festplattenwurzel zeigt. Zum Anschauen einen kleinen
+Webserver nehmen, etwa `python3 -m http.server` im Projektordner. Zum Veröffentlichen den ganzen
 Ordner auf den Webspace laden – oder einfach pushen, GitHub Pages
 veröffentlicht `main` von selbst.
 
@@ -61,6 +70,29 @@ Reihenfolge der Überschriften geprüft, keine Sprünge.
 barrierefrei nachrüsten gehört nicht zum Angebot, neue Seiten schon.
 Der Punkt unter „Was ich nicht mache“ sagt genau das – nicht
 verwässern.
+
+## Echte Unterseiten statt Sprungmarken
+
+Seit dem 24.11.2026 hat jeder Bereich eine eigene Adresse: `/pruefen/`,
+`/bauen/`, `/ablauf/`, `/preise/`, `/kontakt/`. Vorher war alles ein
+Einseiter mit `#leistungen` und Ähnlichem.
+
+**Jede Seite braucht genau eine h1.** Dafür wird die Überschrift des
+ersten Abschnitts zur h1, und alles darunter rutscht eine Ebene hoch:
+h3 wird h2, h4 wird h3. Sonst springt die Gliederung von h1 direkt auf
+h3 – ein Fehler, den unser eigenes Werkzeug melden würde.
+
+Zwei Fallen dabei:
+
+- **Die Ebenen in EINEM Durchgang verschieben.** Erst h4→h3 und dann
+  h3→h2 macht aus beiden eine h2, weil der zweite Lauf die frisch
+  erzeugten h3 mitnimmt.
+- **Die Stile dürfen nicht an der Ebene hängen.** Deshalb stehen dort
+  jetzt `:is(h2,h3)` statt `h3`. Sonst verliert eine Karte ihre
+  Schriftgröße, sobald sie eine Ebene aufsteigt.
+
+Die Links zwischen den Seiten sind absolut (`/preise/`, `/check/`).
+`sitemap.xml` führt alle sieben Adressen.
 
 ## Kurzcheck auf /check
 
