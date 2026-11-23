@@ -41,11 +41,21 @@
     document.head.appendChild(s);
   }
 
+  /* Das Banner klebt unten fest und nähme dem Inhalt sonst keinen Platz
+     weg – es verdeckt dann das Ende jeder Seite. Deshalb bekommt der
+     Seitenfuß genau die Höhe des Banners als Abstand. */
+  function platzSchaffen() {
+    document.body.style.paddingBottom = banner.hidden ? '' : banner.offsetHeight + 'px';
+  }
   function zeigeBanner() {
     banner.hidden = false;
+    platzSchaffen();
+    addEventListener('resize', platzSchaffen);
   }
   function versteckeBanner() {
     banner.hidden = true;
+    document.body.style.paddingBottom = '';
+    removeEventListener('resize', platzSchaffen);
   }
 
   banner.querySelector('[data-statistik="ja"]').addEventListener('click', function () {

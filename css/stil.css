@@ -665,3 +665,75 @@ footer strong{color:var(--ink)}
   font:700 .86rem var(--schrift);color:var(--ink);text-decoration:underline;
   text-underline-offset:.2em;
 }
+
+/* ---------- Kurzcheck ---------- */
+.pruefform{
+  display:grid;gap:1rem;max-width:34rem;margin-bottom:1.25rem;
+  background:var(--karte);border:1px solid var(--rahmen);border-radius:var(--radius);
+  padding:clamp(1.1rem,3vw,1.6rem);box-shadow:var(--schatten);
+}
+.pruefform__label{display:block;font-weight:700;margin-bottom:.45rem}
+.pruefform__feld{
+  width:100%;box-sizing:border-box;
+  font:400 1rem var(--schrift);color:var(--ink);background:var(--grund);
+  border:1px solid var(--rahmen-stark);border-radius:var(--radius-klein);
+  padding:.8rem .9rem;min-height:3rem;
+}
+.pruefform__feld:focus-visible{border-color:var(--teal)}
+.pruefform__hinweis{font-size:.85rem;color:var(--ink-soft);margin:.5rem 0 0}
+.pruefform__hinweis code{font-family:var(--mono);font-size:.9em}
+.pruefform .knopf{justify-self:start}
+
+.pruefstand{min-height:1.5rem;font-size:.95rem;color:var(--ink-soft);margin:0 0 1.5rem}
+/* Nicht nur rot: das Wort „Fehler“ steht im Text, und der Rahmen trägt mit. */
+.pruefstand--fehler{
+  color:var(--ink);background:var(--karte);border-left:4px solid #b02a2a;
+  padding:.8rem 1rem;border-radius:0 var(--radius-klein) var(--radius-klein) 0;max-width:60ch;
+}
+:root[data-theme="dark"] .pruefstand--fehler{border-left-color:#ff9b82}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pruefstand--fehler{border-left-color:#ff9b82}
+}
+
+.ergebnis{margin-bottom:clamp(2rem,4vw,3rem)}
+.ergebnis__kopf{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.ergebnis__kopf h2{font-size:clamp(1.2rem,2.4vw,1.5rem);margin:0}
+.ergebnis__adresse{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);margin:.35rem 0 0;word-break:break-all}
+.ampel{flex:none;width:2.75rem;height:2.75rem;border-radius:50%;border:3px solid}
+.ampel--gruen{background:var(--mint);border-color:var(--teal)}
+.ampel--gelb{background:#fdf0dc;border-color:#8a4b00}
+.ampel--rot{background:#fbe6e3;border-color:#b02a2a}
+:root[data-theme="dark"] .ampel--gelb{background:#3d2d16}
+:root[data-theme="dark"] .ampel--rot{background:#3d1d16}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .ampel--gelb{background:#3d2d16}
+  :root:not([data-theme="light"]) .ampel--rot{background:#3d1d16}
+}
+
+.befunde{list-style:none;margin:0 0 1.5rem;padding:0;display:grid;gap:.1rem;
+  background:var(--karte);border:1px solid var(--rahmen);border-radius:var(--radius);
+  padding:.4rem clamp(1rem,3vw,1.5rem)}
+.befund{display:flex;gap:.9rem;padding:.9rem 0;border-top:1px solid var(--rahmen)}
+.befunde > .befund:first-child{border-top:0}
+.befund__zeichen{flex:none;width:1.6rem;height:1.6rem;border-radius:50%;
+  display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.befund--gruen .befund__zeichen{background:var(--mint);color:var(--teal)}
+.befund--gelb .befund__zeichen{background:#fdf0dc;color:#8a4b00}
+.befund--rot .befund__zeichen{background:#fbe6e3;color:#b02a2a}
+:root[data-theme="dark"] .befund--gelb .befund__zeichen{background:#3d2d16;color:#f0b86e}
+:root[data-theme="dark"] .befund--rot .befund__zeichen{background:#3d1d16;color:#ff9b82}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .befund--gelb .befund__zeichen{background:#3d2d16;color:#f0b86e}
+  :root:not([data-theme="light"]) .befund--rot .befund__zeichen{background:#3d1d16;color:#ff9b82}
+}
+.befund__titel{font-weight:700;margin:0 0 .2rem;font-size:.98rem}
+.befund__info{color:var(--ink-soft);font-size:.9rem;margin:0}
+
+.weiter{background:var(--lila);border-radius:var(--radius);
+  padding:clamp(1.3rem,3.5vw,2rem);max-width:72ch;margin-bottom:2rem}
+.weiter h2{font-size:clamp(1.2rem,2.4vw,1.5rem);margin:0 0 .8rem}
+.weiter p{color:var(--ink-soft);margin:0 0 .8rem}
+.weiter__preis{font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--ink)!important;
+  margin:1.2rem 0 1rem!important}
+.weiter__preis span{display:block;font-size:.72rem;font-weight:400;color:var(--ink-soft);
+  letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}

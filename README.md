@@ -13,6 +13,9 @@ https://allywerk.de
     img/                Logo (hell und dunkel) und Favicon
     fonts/              die beiden Schriften, mitgeliefert
     CNAME               die Domain für GitHub Pages
+    check/index.html    kostenloser Kurzcheck für Interessenten
+    worker/kurzcheck.js Prüfdienst für Cloudflare – gehört NICHT auf die Website
+    js/fremd/           jsPDF, mitgeliefert statt von einem CDN geladen
     sitemap.xml         eine URL – Impressum und Datenschutz stehen auf noindex
     robots.txt          verweist auf die Sitemap
     .htaccess           nur für den Fall eines Umzugs auf Apache-Webspace
@@ -59,6 +62,44 @@ barrierefrei nachrüsten gehört nicht zum Angebot, neue Seiten schon.
 Der Punkt unter „Was ich nicht mache“ sagt genau das – nicht
 verwässern.
 
+## Kurzcheck auf /check
+
+Acht Kernpunkte an einer fremden Startseite: Sprache, Titel, Beschreibung,
+Alternativtexte, Überschriftenstruktur, Formularbeschriftungen,
+Pflichtangaben, HTTPS. Ampel auf der Seite, PDF zum Mitnehmen, darunter
+der Hinweis auf den Detail-Check für 149 €.
+
+**Warum ohne Browser auf dem Server.** Alle acht Punkte stehen im
+Quelltext. Kontraste und Tastaturbedienung nicht – und genau die sind das
+Verkaufsargument für den Detail-Check. Kein Chromium, keine Rechenlast,
+Antwort in unter einer Sekunde.
+
+**Warum trotzdem ein Dienst dazwischen.** Der Browser des Besuchers darf
+fremde Seiten nicht abrufen, das verbietet CORS. `worker/kurzcheck.js`
+ist ein Cloudflare Worker: eine Datei, kein Betriebssystem, kostenlos bis
+100.000 Anfragen am Tag. Er speichert nichts.
+
+**Scharfschalten:** Worker bei Cloudflare anlegen, Inhalt von
+`worker/kurzcheck.js` einfügen, Deploy. Dann die Adresse oben in
+`js/kurzcheck.js` als `DIENST` eintragen. Solange sie leer ist, sagt das
+Formular ehrlich, dass der Dienst nicht verbunden ist, und verweist auf
+die E-Mail-Adresse.
+
+- Private Adressbereiche sind gesperrt (`127.`, `10.`, `192.168.`,
+  `172.16–31.`, `localhost`). Cloudflare routet dorthin ohnehin nicht,
+  aber darauf allein sollte man sich nicht verlassen.
+- `ERLAUBT` im Worker führt die Adressen, von denen Anfragen angenommen
+  werden. Bei einem Domainwechsel mitziehen.
+- Das PDF entsteht im Browser des Besuchers. **jsPDF liegt in
+  `js/fremd/`**, nicht bei einem CDN – sonst stimmte die Zusage in der
+  Datenschutzerklärung nicht mehr. Geladen wird es erst beim Klick,
+  420 KB holt man nicht auf Verdacht.
+- **jsPDF kann Umlaute.** Die Standardschriften rechnen nach WinAnsi um;
+  ä, ö, ü, ß, §, €, Gedankenstrich und deutsche Anführungszeichen kommen
+  sauber an, an Version 4.2.1 nachgemessen. Eine Umschrift nach „ae/oe/ue“
+  ist unnötig und sieht auf einem Kundendokument billig aus. `abspecken()`
+  entfernt nur, was WinAnsi wirklich nicht kennt.
+
 ## Statistik: Google Tag Manager, nur mit Einwilligung
 
 Container `GTM-THVG4P38`, geladen von `js/statistik.js`.
@@ -89,6 +130,10 @@ Jetzt lädt `gtm.js` erst nach einem Klick auf „Erlauben“. Wie es gebaut ist
   Tastaturnutzer erst die ganze Seite durchtabben.
 - Kein `h2` im Banner – es steht vor dem `h1` und würde die
   Überschriftenfolge zerreißen. `aria-labelledby` zeigt auf ein `<p>`.
+- **Das Banner klebt unten fest und nimmt dem Inhalt keinen Platz weg.**
+  Deshalb setzt das Skript `padding-bottom` am `body` auf die Höhe des
+  Banners – sonst verdeckt es das Ende jeder Seite. Auf der Prüfseite
+  verdeckte es das Ergebnis.
 - `GTM_ID` leeren schaltet alles ab: kein Banner, kein Skript.
 
 **Wer Tags im GTM ergänzt, prüft die Datenschutzerklärung mit.** Abschnitt 5
