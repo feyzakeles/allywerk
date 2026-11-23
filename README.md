@@ -59,44 +59,46 @@ barrierefrei nachrüsten gehört nicht zum Angebot, neue Seiten schon.
 Der Punkt unter „Was ich nicht mache“ sagt genau das – nicht
 verwässern.
 
-## Statistik: vorbereitet, aber aus
+## Statistik: Google Tag Manager, nur mit Einwilligung
 
-`js/statistik.js` enthält Google Analytics 4 mit Einwilligung. **Es ist
-abgeschaltet:** Die Konstante `MESS_ID` ist leer, und solange sie leer
-ist, erscheint kein Banner, lädt kein Skript und wird keine Verbindung zu
-Google aufgebaut. Die Seite verhält sich genau so, als gäbe es die Datei
-nicht.
+Container `GTM-THVG4P38`, geladen von `js/statistik.js`.
 
-**Scharfschalten heißt zwei Dinge gleichzeitig:** Mess-ID eintragen *und*
-die Datenschutzerklärung nachziehen. Sonst steht dort eine Unwahrheit.
-Beides macht `scratchpad/ga-aktivieren.py G-XXXXXXXXXX` in einem Schritt.
+**Der Container darf nicht fest im `<head>` stehen.** Genau so stand er vom
+22. bis 23.11.2026 auf der Live-Seite und hat ungefragt zwei Cookies
+gesetzt – gemessen an `allywerk.de`: zwei Anfragen an
+`googletagmanager.com` und `region1.google-analytics.com`, dazu die
+Cookies `_ga` und `_ga_SQ1DGKBGX5`. Gleichzeitig stand in der
+Datenschutzerklärung „keine Cookies". Das ist genau der Befund, für den
+Feyza Kunden prüft, und nach § 25 TDDDG braucht es die Einwilligung
+**vor** dem Zugriff aufs Endgerät.
 
-Wie es gebaut ist:
+Jetzt lädt `gtm.js` erst nach einem Klick auf „Erlauben“. Wie es gebaut ist:
 
-- **Ohne Einwilligung wird nichts geladen.** Kein Skript, kein Cookie,
-  keine Verbindung – gtag.js wird erst nach einem Klick auf „Erlauben“
-  in den `<head>` gehängt. Geprüft, indem der Test jede Netzwerkanfrage
-  mitschreibt.
+- **Ohne Einwilligung passiert nichts.** Kein Skript, kein Cookie, keine
+  Verbindung. Geprüft, indem der Test jede Netzwerkanfrage und jeden
+  Cookie mitschreibt – beim ersten Besuch und nach einem Nein: null.
 - Ablehnen und Erlauben sind **gleich groß und stehen nebeneinander**
-  (je 159 × 50 px gemessen). § 25 TDDDG verlangt die Einwilligung vor dem
-  Zugriff aufs Endgerät, und Ablehnen muss so leicht sein wie Zustimmen.
+  (je 159 × 50 px gemessen). Ablehnen muss so leicht sein wie Zustimmen.
 - Die Entscheidung steht in `localStorage` unter `allywerk-statistik`.
-  Danach wird nicht mehr gefragt – auch nach einem Nein nicht.
+  Nach einem Nein wird nicht erneut gefragt.
 - **Widerruf** über „Statistik-Einstellung ändern“ in der Fußzeile. Der
   Knopf erscheint erst, wenn eine Entscheidung vorliegt, und holt das
-  Banner zurück. Ein Widerruf muss so einfach sein wie die Erteilung.
-- Das Banner steht im HTML **direkt nach dem Sprunglink**, also weit vorn
-  im Tabulatorlauf – nach zwei Tabs erreichbar. Angezeigt wird es unten.
-  Stünde es am Dokumentende, müssten Tastaturnutzer erst die ganze Seite
-  durchtabben.
-- Kein `h2` im Banner: es steht vor dem `h1` der Seite und würde die
+  Banner zurück – ein Widerruf muss so einfach sein wie die Erteilung.
+- Das Banner steht im HTML **direkt nach dem Sprunglink**, also nach zwei
+  Tabs erreichbar. Angezeigt wird es unten. Am Dokumentende müssten
+  Tastaturnutzer erst die ganze Seite durchtabben.
+- Kein `h2` im Banner – es steht vor dem `h1` und würde die
   Überschriftenfolge zerreißen. `aria-labelledby` zeigt auf ein `<p>`.
+- `GTM_ID` leeren schaltet alles ab: kein Banner, kein Skript.
+
+**Wer Tags im GTM ergänzt, prüft die Datenschutzerklärung mit.** Abschnitt 5
+nennt die Cookies beim Namen. Kommt ein Dienst dazu, muss er dort stehen.
 
 Zwei Fallen, die beim Bauen zugeschnappt sind:
 
 - **`[hidden]` wirkt nicht, wenn irgendwo ein `display` dafür steht.**
   `.statistik{display:flex}` hat den Browser-Standard überstimmt, das
-  Banner war immer sichtbar – auch ohne Mess-ID. Deshalb steht jetzt
+  Banner war immer sichtbar. Deshalb steht jetzt
   `[hidden]{display:none!important}` ganz oben in `stil.css`.
 - **`.knopf` setzte keinen Hintergrund.** An `<a>` egal, an `<button>`
   scheint der graue Browser-Standard `buttonface` durch: im Dunkelmodus
@@ -110,8 +112,8 @@ Angebunden über eine **Domain-Property** (DNS-TXT-Eintrag bei IONOS), nicht
 und keine Änderung an der Datenschutzerklärung – die fünf Zusagen in
 Abschnitt 2 bleiben wahr.
 
-**Kein Google Analytics.** GA4 würde alle fünf brechen und ein
-Einwilligungsbanner nötig machen. Bewusst nicht eingebaut.
+Die Search Console braucht **kein Skript auf der Seite** – daran ändert
+auch der Tag Manager nichts. Sie läuft weiter über den DNS-Eintrag.
 
 Impressum und Datenschutzerklärung tragen `noindex`. In der Search Console
 tauchen sie deshalb unter „Durch noindex ausgeschlossen“ auf – das ist kein
