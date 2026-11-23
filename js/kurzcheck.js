@@ -7,7 +7,7 @@
    Solange DIENST leer ist, sagt das Formular ehrlich, dass der Dienst noch
    nicht verbunden ist, statt stumm zu scheitern. */
 (function () {
-  var DIENST = '';   // z. B. 'https://kurzcheck.<name>.workers.dev'
+  var DIENST = 'https://kurzcheck.shrill-wind-658d.workers.dev/';
 
   var form = document.getElementById('pruefform');
   if (!form) return;
