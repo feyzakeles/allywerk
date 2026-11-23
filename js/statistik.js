@@ -16,7 +16,7 @@
    Die Entscheidung lässt sich über den Link in der Fußzeile ändern;
    ein Widerruf muss so einfach sein wie die Erteilung. */
 (function () {
-  var GTM_ID = 'GTM-THVG4P38';      // Google-Tag-Manager-Container, leer = alles aus
+  var GTM_ID = 'GTM-5QXXQCX6';      // Google-Tag-Manager-Container, leer = alles aus
   var SCHLUESSEL = 'allywerk-statistik';
 
   var banner = document.getElementById('statistik-banner');
