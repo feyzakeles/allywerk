@@ -59,6 +59,50 @@ barrierefrei nachrüsten gehört nicht zum Angebot, neue Seiten schon.
 Der Punkt unter „Was ich nicht mache“ sagt genau das – nicht
 verwässern.
 
+## Statistik: vorbereitet, aber aus
+
+`js/statistik.js` enthält Google Analytics 4 mit Einwilligung. **Es ist
+abgeschaltet:** Die Konstante `MESS_ID` ist leer, und solange sie leer
+ist, erscheint kein Banner, lädt kein Skript und wird keine Verbindung zu
+Google aufgebaut. Die Seite verhält sich genau so, als gäbe es die Datei
+nicht.
+
+**Scharfschalten heißt zwei Dinge gleichzeitig:** Mess-ID eintragen *und*
+die Datenschutzerklärung nachziehen. Sonst steht dort eine Unwahrheit.
+Beides macht `scratchpad/ga-aktivieren.py G-XXXXXXXXXX` in einem Schritt.
+
+Wie es gebaut ist:
+
+- **Ohne Einwilligung wird nichts geladen.** Kein Skript, kein Cookie,
+  keine Verbindung – gtag.js wird erst nach einem Klick auf „Erlauben“
+  in den `<head>` gehängt. Geprüft, indem der Test jede Netzwerkanfrage
+  mitschreibt.
+- Ablehnen und Erlauben sind **gleich groß und stehen nebeneinander**
+  (je 159 × 50 px gemessen). § 25 TDDDG verlangt die Einwilligung vor dem
+  Zugriff aufs Endgerät, und Ablehnen muss so leicht sein wie Zustimmen.
+- Die Entscheidung steht in `localStorage` unter `allywerk-statistik`.
+  Danach wird nicht mehr gefragt – auch nach einem Nein nicht.
+- **Widerruf** über „Statistik-Einstellung ändern“ in der Fußzeile. Der
+  Knopf erscheint erst, wenn eine Entscheidung vorliegt, und holt das
+  Banner zurück. Ein Widerruf muss so einfach sein wie die Erteilung.
+- Das Banner steht im HTML **direkt nach dem Sprunglink**, also weit vorn
+  im Tabulatorlauf – nach zwei Tabs erreichbar. Angezeigt wird es unten.
+  Stünde es am Dokumentende, müssten Tastaturnutzer erst die ganze Seite
+  durchtabben.
+- Kein `h2` im Banner: es steht vor dem `h1` der Seite und würde die
+  Überschriftenfolge zerreißen. `aria-labelledby` zeigt auf ein `<p>`.
+
+Zwei Fallen, die beim Bauen zugeschnappt sind:
+
+- **`[hidden]` wirkt nicht, wenn irgendwo ein `display` dafür steht.**
+  `.statistik{display:flex}` hat den Browser-Standard überstimmt, das
+  Banner war immer sichtbar – auch ohne Mess-ID. Deshalb steht jetzt
+  `[hidden]{display:none!important}` ganz oben in `stil.css`.
+- **`.knopf` setzte keinen Hintergrund.** An `<a>` egal, an `<button>`
+  scheint der graue Browser-Standard `buttonface` durch: im Dunkelmodus
+  heller Text auf Hellgrau, 1,01:1. Die Klasse hat jetzt
+  `background:transparent`.
+
 ## Google Search Console
 
 Angebunden über eine **Domain-Property** (DNS-TXT-Eintrag bei IONOS), nicht

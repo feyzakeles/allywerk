@@ -17,6 +17,17 @@
 <body>
 <a class="springen" href="#inhalt">Zum Inhalt springen</a>
 
+<div class="statistik" id="statistik-banner" role="region" aria-labelledby="statistik-titel" hidden>
+  <div class="statistik__kasten">
+    <p class="statistik__titel" id="statistik-titel">Statistik erlauben?</p>
+    <p class="statistik__text" id="statistik-text">Ich würde gern wissen, welche Seiten gelesen werden. Dafür lädt Google Analytics und setzt ein Cookie; dabei geht Ihre IP-Adresse an Google. Ohne Ihre Zustimmung passiert nichts davon. Einzelheiten in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    <div class="statistik__knoepfe">
+      <button class="knopf knopf--rand" type="button" data-statistik="nein">Ablehnen</button>
+      <button class="knopf knopf--voll" type="button" data-statistik="ja">Erlauben</button>
+    </div>
+  </div>
+</div>
+
 <div id="seitenanfang" tabindex="-1"></div>
 
 <header class="kopf">
@@ -430,10 +441,12 @@
     <nav class="fussnav" aria-label="Rechtliches">
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutzerklärung</a>
+      <button type="button" id="statistik-aendern" hidden>Statistik-Einstellung ändern</button>
     </nav>
   </div>
 </footer>
 
 <script src="js/navigation.js" defer></script>
+<script src="js/statistik.js" defer></script>
 </body>
 </html>

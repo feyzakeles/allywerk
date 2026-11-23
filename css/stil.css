@@ -142,6 +142,11 @@ body{
 h1,h2,h3{line-height:1.15;letter-spacing:-.02em;text-wrap:balance;margin:0}
 p{margin:0}
 a{color:inherit}
+/* Jede eigene display-Regel schlägt den Browser-Standard [hidden]{display:none}.
+   Ohne diese Zeile bleibt ein Element mit hidden sichtbar, sobald irgendwo
+   ein display dafür steht – genau das ist beim Statistik-Banner passiert. */
+[hidden]{display:none!important}
+
 :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
 ::selection{background:var(--violett);color:#fff}
 img,svg{max-width:100%}
@@ -158,6 +163,10 @@ img,svg{max-width:100%}
   font:700 .97rem/1 var(--schrift);
   padding:.95rem 1.5rem;border-radius:999px;
   text-decoration:none;border:2px solid transparent;cursor:pointer;
+  /* Ohne das behält ein <button class="knopf"> den grauen Browser-Standard
+     buttonface – im Dunkelmodus heller Text auf hellgrau, 1,01:1.
+     An <a> fiel das nie auf, weil Links keinen eigenen Hintergrund haben. */
+  background:transparent;
   transition:transform .15s ease,background-color .15s ease,box-shadow .15s ease;
 }
 .knopf--voll{background:var(--teal);color:var(--teal-ink);box-shadow:var(--schatten)}
@@ -625,4 +634,34 @@ footer strong{color:var(--ink)}
 /* Wer Bewegung reduziert haben will, bekommt die Schublade ohne Fahrt. */
 @media (prefers-reduced-motion:reduce){
   .js-nav .schublade{transition:none}
+}
+
+/* ---------- Einwilligung für die Statistik ---------- */
+/* Steht im HTML weit vorn, damit Tastaturnutzer nicht erst die ganze
+   Seite durchtabben müssen – angezeigt wird es unten.
+   Ablehnen und Erlauben sind gleich groß und stehen nebeneinander:
+   Ablehnen muss so leicht sein wie Zustimmen. */
+.statistik{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  padding:clamp(.75rem,3vw,1.5rem);
+  display:flex;justify-content:center;pointer-events:none;
+}
+.statistik__kasten{
+  pointer-events:auto;width:100%;max-width:34rem;
+  background:var(--karte);color:var(--ink);
+  border:1px solid var(--rahmen-stark);border-radius:var(--radius);
+  box-shadow:var(--schatten-hoch);
+  padding:clamp(1.1rem,3vw,1.5rem);display:grid;gap:.7rem;
+}
+.statistik__titel{font-size:1.1rem;margin:0}
+.statistik__text{font-size:.92rem;color:var(--ink-soft);margin:0;max-width:60ch}
+.statistik__text a{color:var(--teal)}
+.statistik__knoepfe{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.2rem}
+.statistik__knoepfe .knopf{flex:1 1 9rem;justify-content:center;text-align:center}
+/* Sieht aus wie die Links daneben, ist aber ein Knopf – er führt
+   nirgendwohin, er öffnet das Banner wieder. */
+#statistik-aendern{
+  background:none;border:0;padding-block:.35rem;cursor:pointer;
+  font:700 .86rem var(--schrift);color:var(--ink);text-decoration:underline;
+  text-underline-offset:.2em;
 }
