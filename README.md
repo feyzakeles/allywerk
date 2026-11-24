@@ -28,6 +28,33 @@ doppelklicken reicht zum Anschauen. Zum Veröffentlichen den ganzen
 Ordner auf den Webspace laden – oder einfach pushen, GitHub Pages
 veröffentlicht `main` von selbst.
 
+## Die Adressen
+
+In der Adressleiste soll `allywerk.de/` stehen, nicht
+`allywerk.de/index.html#seitenanfang`. Drei Dinge halten das:
+
+- **Kein Verweis nennt `index.html`.** Vom Impressum, vom Datenschutz
+  und von `/check` geht es mit `./` beziehungsweise `../` zurück auf
+  die Startseite, mit Sprungmarke als `./#preise`. Vorher stand dort
+  `index.html#preise`, und genau das landete in der Adresse.
+- **`js/navigation.js` kürzt `/index.html` auf `/`** (replaceState) und
+  nimmt `#seitenanfang` wieder heraus, sobald das Logo oder
+  „Nach oben“ geklickt wurde. Die Sprungmarke steht weiter im href,
+  damit es ohne JavaScript funktioniert – geteilt wird so ein Link nie.
+- **`<link rel="canonical">` in allen vier Seiten.** `/` und
+  `/index.html` liefern dasselbe; ohne canonical sind das für Google
+  zwei Seiten mit gleichem Inhalt.
+
+Die Sprungmarken der Bereiche (`#leistungen`, `#bauen`, `#ablauf`,
+`#preise`, `#kontakt`) bleiben bewusst in der Adresse stehen. Genau
+die machen einen Einseiter verlinkbar – ohne sie könnte man auf
+LinkedIn nicht auf den Preis-Abschnitt zeigen.
+
+**Nebenwirkung:** Vom Impressum, Datenschutz oder `/check` führt
+„Startseite“ jetzt auf den Ordner. Beim Doppelklicken im Finder
+(`file://`) zeigt der Browser dann eine Ordnerliste statt der Seite.
+Zum Anschauen also den kleinen Webserver nehmen, siehe unten.
+
 ## Einseiter, bewusst
 
 Alle Inhalte stehen auf `index.html`, die Navigation springt mit

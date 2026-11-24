@@ -108,3 +108,46 @@
     else if (!e.shiftKey && document.activeElement === letztes) { e.preventDefault(); erstes.focus(); }
   });
 })();
+
+/* Saubere Adressen.
+   Zwei Dinge, die vorher in der Adressleiste standen und dort nicht
+   hingehören:
+
+   1. `/index.html`. Dieselbe Seite ist unter `/` und unter
+      `/index.html` erreichbar. Alle Verweise zeigen inzwischen auf den
+      Ordner, aber ein altes Lesezeichen oder ein getippter Pfad landet
+      weiter auf der langen Form – die wird hier stillschweigend
+      verkürzt. Für Suchmaschinen steht zusätzlich ein canonical im
+      Kopf; das Aufräumen hier ist nur fürs Auge.
+
+   2. `#seitenanfang`. Das Logo und „Nach oben“ springen an den Anfang.
+      Die Sprungmarke steht im href, damit das ohne JavaScript
+      funktioniert – geteilt wird so ein Link aber nie, also gehört er
+      nicht in die Adresse.
+
+   replaceState statt pushState: sonst wächst die Zurück-Liste bei jedem
+   Klick auf „Nach oben“ um einen Eintrag, und Zurück führt nicht mehr
+   dahin, wo man herkam. Die Sprungmarken der Bereiche (#leistungen und
+   die anderen) bleiben bewusst stehen: Genau die machen einen Einseiter
+   verlinkbar. */
+(function () {
+  if (!window.history || !history.replaceState) return;
+
+  var kurz = location.pathname.replace(/index\.html$/, '');
+  if (kurz !== location.pathname) {
+    history.replaceState(null, '', kurz + location.search + location.hash);
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href="#seitenanfang"]') : null;
+    if (!a) return;
+    e.preventDefault();
+    // Fokus wandert mit, sonst tabbt man nach dem Sprung dort weiter,
+    // wo man vorher war. preventScroll, damit das Setzen nicht selbst
+    // schon springt – scrollen soll die Seite weich, wie im CSS gesetzt.
+    var anfang = document.getElementById('seitenanfang');
+    if (anfang) anfang.focus({ preventScroll: true });
+    window.scrollTo({ top: 0 });
+    history.replaceState(null, '', location.pathname + location.search);
+  });
+})();
