@@ -16,7 +16,8 @@ https://allywerk.de
     check/index.html    kostenloser Kurzcheck für Interessenten
     worker/kurzcheck.js Prüfdienst für Cloudflare – gehört NICHT auf die Website
     js/fremd/           jsPDF, mitgeliefert statt von einem CDN geladen
-    sitemap.xml         eine URL – Impressum und Datenschutz stehen auf noindex
+    sitemap.xml         zwei URLs: Startseite und /check/ – Impressum und
+                        Datenschutz stehen auf noindex
     robots.txt          verweist auf die Sitemap
     .htaccess           nur für den Fall eines Umzugs auf Apache-Webspace
 
@@ -26,6 +27,33 @@ ohne die Datei funktioniert alles andere weiter. `index.html`
 doppelklicken reicht zum Anschauen. Zum Veröffentlichen den ganzen
 Ordner auf den Webspace laden – oder einfach pushen, GitHub Pages
 veröffentlicht `main` von selbst.
+
+## Einseiter, bewusst
+
+Alle Inhalte stehen auf `index.html`, die Navigation springt mit
+`#leistungen`, `#bauen`, `#ablauf`, `#preise`, `#kontakt` innerhalb
+der Seite. Eigene Ordner pro Bereich gab es am 23.11.2026 einen Tag
+lang (`/pruefen/`, `/bauen/`, `/ablauf/`, `/preise/`, `/kontakt/`) –
+Feyza wollte den Einseiter zurück, der Umbau ging komplett raus
+(Commit af93dc5 und seine Rücknahme).
+
+Wer das wieder aufmachen will, sollte wissen, was daran hängt:
+
+- **Alle Verweise sind relativ.** Auf der Startseite `check/`,
+  `impressum.html`; auf `/check/` dann `../impressum.html`. In einem
+  tieferen Ordner bricht das – deshalb brauchte der Umbau absolute
+  Pfade, und damit war `index.html` nicht mehr per Doppelklick
+  anzusehen, sondern nur noch über einen lokalen Webserver.
+- **Die Überschriftenstufen hängen an der Seitenstruktur.** Im
+  Einseiter ist genau eine `h1` auf der Seite und jeder Bereich
+  eine `h2`. Wird ein Bereich zur eigenen Seite, muss seine
+  Überschrift zur `h1` werden und alles darunter eine Stufe
+  aufrücken – sonst fängt die Seite bei `h2` an. Das ist WCAG 1.3.1.
+- **Die CSS-Auswahl nennt Stufen beim Namen** (`.kopfzeile h2`,
+  `.leistung h3`). Nach einer Verschiebung greift sie nicht mehr;
+  im Umbau stand dort `:is(h1,h2)` und so weiter.
+
+Nichts davon ist unlösbar, aber es ist mehr als Dateien verschieben.
 
 ## Eine Person, nicht zwei
 
